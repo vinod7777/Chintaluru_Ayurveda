@@ -1,0 +1,74 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 33% 97%;
+    --foreground: 150 28% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 150 28% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 150 28% 15%;
+    --primary: 150 28% 15%;
+    --primary-foreground: 45 33% 97%;
+    --secondary: 120 14% 91%;
+    --secondary-foreground: 150 28% 15%;
+    --muted: 120 14% 91%;
+    --muted-foreground: 0 0% 16%;
+    --accent: 39 40% 56%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 39 40% 56% / 0.15;
+    --input: 39 40% 56% / 0.15;
+    --ring: 39 40% 56%;
+    --radius: 0.625rem;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  body {
+    @apply bg-linen text-forest font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/75 backdrop-blur-md border border-gold/20;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-20 lg:py-24;
+  }
+
+  .content-max {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+
+  .label-style {
+    @apply font-body font-semibold text-xs tracking-[0.15em] uppercase text-gold;
+  }
+
+  .gold-border-bottom {
+    @apply border-b border-gold/15;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
