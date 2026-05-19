@@ -8,6 +8,7 @@ import Footer from '@/components/Footer';
 import CursorFollower from './components/CursorFollower';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import IntroOverlay from '@/components/IntroOverlay';
+import FloatingLeaves from '@/components/FloatingLeaves';
 
 import HeroSection from '@/sections/HeroSection';
 import InfoBar from '@/sections/InfoBar';
@@ -16,6 +17,7 @@ import ServicesSection from '@/sections/ServicesSection';
 import ConditionsSection from '@/sections/ConditionsSection';
 import TherapiesSection from '@/sections/TherapiesSection';
 import WhyChooseSection from '@/sections/WhyChooseSection';
+import DoshaQuizSection from '@/sections/DoshaQuizSection';
 import TestimonialsSection from '@/sections/TestimonialsSection';
 import CTABanner from '@/sections/CTABanner';
 import ContactSection from '@/sections/ContactSection';
@@ -90,10 +92,11 @@ export default function App() {
 
   return (
     <div className="relative">
+      <FloatingLeaves />
       <CursorFollower />
       <IntroOverlay />
       <Navigation />
-      <main>
+      <main className="relative z-10">
         <HeroSection />
         <GallerySection />
         <InfoBar />
@@ -102,6 +105,7 @@ export default function App() {
         <ConditionsSection />
         <TherapiesSection />
         <WhyChooseSection />
+        <DoshaQuizSection />
         <TestimonialsSection />
         <CTABanner />
         <ContactSection />

@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 
 import BookNowButton from '@/components/BookNowButton';
+import BotanicalDecor from '@/components/BotanicalDecor';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -54,8 +55,9 @@ export default function ConditionsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-linen pb-20 md:pb-24 lg:pb-28">
-      <div className="content-max">
+    <section ref={sectionRef} className="relative overflow-hidden bg-linen pb-20 md:pb-24 lg:pb-28">
+      <BotanicalDecor variant="medicine" density="medium" colorClass="text-gold" />
+      <div className="content-max relative z-10">
         <div className="conditions-grid grid grid-cols-1 lg:grid-cols-2 gap-6">
           {conditions.map((condition, i) => (
             <div

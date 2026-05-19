@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 
+import BotanicalDecor from '@/components/BotanicalDecor';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
@@ -71,8 +73,9 @@ export default function TestimonialsSection() {
   const goNext = () => setActiveIndex((prev) => (prev + 1) % testimonials.length);
 
   return (
-    <section ref={sectionRef} className="bg-linen py-20 md:py-24 lg:py-28">
-      <div className="content-max">
+    <section ref={sectionRef} className="relative overflow-hidden bg-linen py-20 md:py-24 lg:py-28">
+      <BotanicalDecor variant="leaves" density="medium" colorClass="text-sage" />
+      <div className="content-max relative z-10">
         {/* Header */}
         <div className="testimonials-header text-center mb-12">
           <span className="label-style mb-3 block">TESTIMONIALS</span>
@@ -86,13 +89,15 @@ export default function TestimonialsSection() {
           {/* Navigation Arrows */}
           <button
             onClick={goPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-10 w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-forest hover:bg-gold hover:text-white transition-colors"
+            aria-label="Previous testimonial"
+            className="absolute left-1 md:left-0 top-1/2 -translate-y-1/2 md:-translate-x-12 z-10 w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-forest hover:bg-gold hover:text-white transition-colors"
           >
             <ChevronLeft size={20} />
           </button>
           <button
             onClick={goNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 md:translate-x-12 z-10 w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-forest hover:bg-gold hover:text-white transition-colors"
+            aria-label="Next testimonial"
+            className="absolute right-1 md:right-0 top-1/2 -translate-y-1/2 md:translate-x-12 z-10 w-10 h-10 rounded-full bg-white shadow-card flex items-center justify-center text-forest hover:bg-gold hover:text-white transition-colors"
           >
             <ChevronRight size={20} />
           </button>

@@ -1,7 +1,8 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import gsap from 'gsap';
 
 import BookNowButton from '@/components/BookNowButton';
+import BotanicalDecor from '@/components/BotanicalDecor';
 
 const FloatingLeaf = ({ className, delay = 0 }: { className?: string; delay?: number }) => (
   <svg
@@ -171,6 +172,9 @@ export default function HeroSection() {
       <FloatingLeaf className="w-20 md:w-32 bottom-[20%] left-[10%] animate-float" delay={2} />
       <FloatingLeaf className="w-14 md:w-24 bottom-[30%] right-[5%] animate-float-slow" delay={0.5} />
 
+      {/* Cursor-interactive botanical layer */}
+      <BotanicalDecor variant="leaves" density="medium" colorClass="text-gold" />
+
       {/* Content */}
       <div
         ref={contentRef}
@@ -239,8 +243,8 @@ export default function HeroSection() {
         </span>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+      {/* Scroll Indicator — hidden on phones to avoid colliding with slider dots & WhatsApp FAB */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 opacity-60">
         <span className="font-body text-[10px] tracking-[0.2em] text-linen uppercase">Scroll</span>
         <div className="w-5 h-8 border-2 border-linen/50 rounded-full flex items-start justify-center p-1">
           <div className="w-1 h-2 bg-linen rounded-full animate-bounce" />

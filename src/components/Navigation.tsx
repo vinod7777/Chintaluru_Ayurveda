@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import BookNowButton from '@/components/BookNowButton';
+import MagneticButton from '@/components/MagneticButton';
 
 const navLinks = [
   { label: 'HOME', href: '#home' },
@@ -16,6 +17,17 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const isScrolled = scrollY > 100;
   const [activeSection, setActiveSection] = useState('home');
+
+  // Lock body scroll while the mobile menu overlay is open
+  useEffect(() => {
+    if (mobileOpen) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = original;
+      };
+    }
+  }, [mobileOpen]);
 
   useEffect(() => {
     const sections = navLinks.map((l) => l.href.replace('#', ''));
@@ -63,7 +75,7 @@ export default function Navigation() {
                 <path d="M12 4c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-4 3c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm8 0c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1z" fill="#C5A059"/>
               </svg>
             </div>
-            <span className="font-display font-medium text-base tracking-wide text-forest transition-colors">
+            <span className="font-display font-medium text-sm sm:text-base tracking-wide text-forest transition-colors truncate">
               Chintaluru Ayurveda
             </span>
           </a>
@@ -86,10 +98,12 @@ export default function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <BookNowButton
-            label="Book Now"
-            className={`hidden md:inline-flex items-center gap-2 font-body font-semibold text-xs px-6 py-2.5 rounded-pill transition-all duration-300 bg-gold text-white hover:shadow-gold-glow hover:-translate-y-0.5`}
-          />
+          <MagneticButton strength={8} className="hidden md:inline-block">
+            <BookNowButton
+              label="Book Now"
+              className="inline-flex items-center gap-2 font-body font-semibold text-xs px-6 py-2.5 rounded-pill transition-all duration-300 bg-gold text-white hover:shadow-gold-glow"
+            />
+          </MagneticButton>
 
           {/* Mobile Menu Toggle */}
           <button

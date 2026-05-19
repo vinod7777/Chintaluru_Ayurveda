@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import BookNowButton from '@/components/BookNowButton';
+import BotanicalDecor from '@/components/BotanicalDecor';
 import { BOOKING_MESSAGE } from '@/lib/booking';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -97,10 +98,19 @@ export default function TherapiesSection() {
     <section
       ref={sectionRef}
       id="therapies"
-      className="py-20 md:py-24 lg:py-28"
+      className="relative overflow-hidden py-20 md:py-24 lg:py-28"
       style={{ background: 'linear-gradient(180deg, #1B3022 0%, #2A4535 100%)' }}
     >
-      <div className="content-max">
+      {/* Cursor-interactive medicine + herb layer */}
+      <BotanicalDecor
+        variant="medicine"
+        density="high"
+        colorClass="text-gold"
+        opacityBoost={3}
+        strokeWidth={1.8}
+      />
+
+      <div className="content-max relative z-10">
         {/* Section Header */}
         <div className="therapies-header text-center mb-12 md:mb-16">
           <span className="label-style mb-3 block">SIGNATURE THERAPIES</span>
@@ -118,7 +128,8 @@ export default function TherapiesSection() {
             <div
               key={i}
               className={`therapy-row grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
-                i % 2 !== 0 ? 'lg:flex-row-reverse' : ''
+                /* alternating layout is handled by lg:order-* on children below */
+                ''
               }`}
             >
               {/* Image */}

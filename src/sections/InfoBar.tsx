@@ -3,6 +3,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Users, Clock, Phone } from 'lucide-react';
 
+import BotanicalDecor from '@/components/BotanicalDecor';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const infoItems = [
@@ -51,8 +53,9 @@ export default function InfoBar() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-linen py-12 md:py-14 gold-border-bottom">
-      <div className="content-max">
+    <section ref={sectionRef} className="relative overflow-hidden bg-linen py-12 md:py-14 gold-border-bottom">
+      <BotanicalDecor variant="mixed" density="medium" colorClass="text-forest" />
+      <div className="content-max relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6">
           {infoItems.map((item, i) => (
             <div

@@ -4,6 +4,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Stethoscope, Leaf, BookOpen, Heart } from 'lucide-react';
 
 import BookNowButton from '@/components/BookNowButton';
+import BotanicalDecor from '@/components/BotanicalDecor';
+import TiltCard from '@/components/TiltCard';
+import MagneticButton from '@/components/MagneticButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,6 +95,9 @@ export default function WhyChooseSection() {
         <div className="absolute inset-0 bg-forest/80" />
       </div>
 
+      {/* Cursor-interactive botanical layer (sits above bg image, below content) */}
+      <BotanicalDecor variant="mixed" density="medium" colorClass="text-gold" />
+
       <div className="content-max relative z-10">
         {/* Header */}
         <div className="why-header text-center mb-12 md:mb-16">
@@ -106,27 +112,32 @@ export default function WhyChooseSection() {
         {/* Feature Cards */}
         <div className="features-grid grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {features.map((feature, i) => (
-            <div
+            <TiltCard
               key={i}
-              className="feature-card group bg-linen/[0.12] backdrop-blur-md border border-gold/20 rounded-2xl p-8 transition-transform duration-300 hover:-translate-y-2 hover:bg-linen/[0.16]"
+              className="feature-card rounded-2xl"
+              max={5}
             >
-              <feature.icon size={28} className="text-gold mb-4" />
-              <h3 className="font-display font-semibold text-lg text-linen mb-3">
-                {feature.title}
-              </h3>
-              <p className="font-body text-sm text-linen/75 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
+              <div className="group bg-linen/[0.12] backdrop-blur-md border border-gold/20 rounded-2xl p-8 transition-colors duration-300 hover:bg-linen/[0.18] h-full">
+                <feature.icon size={28} className="text-gold mb-4" />
+                <h3 className="font-display font-semibold text-lg text-linen mb-3">
+                  {feature.title}
+                </h3>
+                <p className="font-body text-sm text-linen/75 leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </TiltCard>
           ))}
         </div>
 
         {/* CTA */}
         <div className="why-cta text-center mt-12">
-          <BookNowButton
-            label="Book An Appointment"
-            className="inline-flex items-center gap-2 bg-gold text-white font-body font-semibold text-sm px-10 py-4 rounded-pill hover:bg-[#D4B76A] hover:shadow-gold-glow transition-all duration-300"
-          />
+          <MagneticButton strength={10}>
+            <BookNowButton
+              label="Book An Appointment"
+              className="inline-flex items-center gap-2 bg-gold text-white font-body font-semibold text-sm px-10 py-4 rounded-pill hover:bg-[#D4B76A] hover:shadow-gold-glow transition-all duration-300"
+            />
+          </MagneticButton>
         </div>
       </div>
     </section>

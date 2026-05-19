@@ -4,6 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 
 import BookNowButton from '@/components/BookNowButton';
+import BotanicalDecor from '@/components/BotanicalDecor';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -67,8 +68,9 @@ export default function ServicesSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="services" className="bg-linen py-20 md:py-24 lg:py-28">
-      <div className="content-max">
+    <section ref={sectionRef} id="services" className="relative overflow-hidden bg-linen py-20 md:py-24 lg:py-28">
+      <BotanicalDecor variant="leaves" density="medium" colorClass="text-forest" />
+      <div className="content-max relative z-10">
         {/* Section Header */}
         <div className="services-header text-center mb-12 md:mb-16">
           <span className="label-style mb-3 block">SPECIALIZED SERVICES</span>

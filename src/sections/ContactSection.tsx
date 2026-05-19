@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import BookNowButton from '@/components/BookNowButton';
+import BotanicalDecor from '@/components/BotanicalDecor';
 import { BOOKING_MESSAGE } from '@/lib/booking';
 
 export default function ContactSection() {
@@ -9,8 +10,9 @@ export default function ContactSection() {
 
   const contactMessage = `${BOOKING_MESSAGE} - Section: Contact Us\nName: ${name || '-'}\nEmail: ${email || '-'}\nMessage: ${messageText || '-'}`;
   return (
-    <section id="contact" className="bg-white py-20">
-      <div className="content-max">
+    <section id="contact" className="relative overflow-hidden bg-white py-20">
+      <BotanicalDecor variant="mixed" density="medium" colorClass="text-sage" />
+      <div className="content-max relative z-10">
         <div className="text-center mb-12">
           <span className="label-style mb-3 block">GET IN TOUCH</span>
           <h2 className="font-display font-semibold text-3xl md:text-4xl text-forest">

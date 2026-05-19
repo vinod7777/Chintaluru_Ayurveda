@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+import BotanicalDecor from '@/components/BotanicalDecor';
+
 gsap.registerPlugin(ScrollTrigger);
 
 const expertiseTags = [
@@ -75,6 +77,9 @@ export default function AboutSection() {
           fill="currentColor"
         />
       </svg>
+
+      {/* Cursor-interactive botanical layer */}
+      <BotanicalDecor variant="leaves" density="medium" colorClass="text-forest" />
 
       <div className="content-max relative z-10">
         {/* Section Header */}
